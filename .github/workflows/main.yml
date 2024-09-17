@@ -15,7 +15,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcc-multilib g++-multilib 
         # libunwind8 libc6-dev g++ gcc libunwind-dev
-        # wget https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-2.6.0.tar.gz
+        # wget https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-1.7.0-5.tar.gz
         # tar -xzf DrMemory-Linux-2.6.0.tar.gz
         # export PATH=$PATH:$PWD/DrMemory-Linux-2.6.0/bin
 
@@ -37,7 +37,7 @@ jobs:
       run: | 
         sudo apt-get update
         sudo apt-get install -y libunwind8
-        wget -P /tmp/ https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-2.6.0.tar.gz && tar -xzf /tmp/DrMemory-Linux-2.6.0.tar.gz -C /tmp/ && echo "/tmp/DrMemory-Linux-2.6.0/bin" >> $GITHUB_PATH
+        wget -P /tmp/ https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-1.7.0-5.tar.gz && tar -xzf /tmp/DrMemory-Linux-1.7.0-5.tar.gz -C /tmp/ && echo "/tmp/DrMemory-Linux-1.7.0-5/bin" >> $GITHUB_PATH
            
     - name: Disable Address Space Randomization
       if: runner.os == 'Linux'
