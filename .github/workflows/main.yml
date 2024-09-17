@@ -24,13 +24,13 @@ jobs:
 
     - name: Compile drmemory-false-positive.c
       run: |
-        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libunwind.so.8:$LD_LIBRARY_PATH
         gcc -m32 -pthread -o drmemory-false-positive drmemory-false-positive.c
         find /usr -name "libunwind.so.8"
 
     - name: Run Dr. Memory Multiple Times
       run: |
-        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libunwind.so.8:$LD_LIBRARY_PATH
         for i in {1..10}; do
           echo "===== Run $i ====="
           ./DrMemory-Linux-2.6.0/bin/drmemory -- ./drmemory-false-positive | grep -A 1 Error
