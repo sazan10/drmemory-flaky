@@ -29,6 +29,7 @@ jobs:
 
     - name: Run Dr. Memory Multiple Times
       run: |
+        export LD_LIBRARY_PATH=/usr/local/julia1.10.5/lib/julia/:$LD_LIBRARY_PATH
         for i in {1..10}; do
           echo "===== Run $i ====="
           ./DrMemory-Linux-2.6.0/bin/drmemory -- ./drmemory-false-positive | grep -A 1 Error
