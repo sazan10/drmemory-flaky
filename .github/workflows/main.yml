@@ -1,0 +1,33 @@
+name: Reproduce Dr. Memory Flaky Race Condition Issue #1557
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-multilib g++-multilib
+
+    - name: Download and Set Up Dr. Memory
+      run: |
+        wget https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-2.6.0.tar.gz
+        tar -xzf DrMemory-Linux-2.6.0.tar.gz
+        export PATH=$PATH:$PWD/DrMemory-Linux-2.6.0/bin
+
+    - name: Compile drmemory-false-positive.c
+      run: |
+        gcc -m32 -pthread -o drmemory-false-positive drmemory-false-positive.c
+
+    - name: Run Dr. Memory Multiple Times
+      run: |
+        for i in {1..10}; do
+          echo "===== Run $i ====="
+          ./DrMemory-Linux-2.6.0/bin/drmemory -- ./drmemory-false-positive | grep -A 1 Error
+        done
