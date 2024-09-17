@@ -25,6 +25,7 @@ jobs:
     - name: Compile drmemory-false-positive.c
       run: |
         gcc -m32 -pthread -o drmemory-false-positive drmemory-false-positive.c
+        find /usr -name "libunwind.so.8"
 
     - name: Run Dr. Memory Multiple Times
       run: |
