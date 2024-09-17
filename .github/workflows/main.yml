@@ -24,6 +24,7 @@ jobs:
 
     - name: Compile drmemory-false-positive.c
       run: |
+        export LD_LIBRARY_PATH=/usr/local/julia1.10.5/lib/julia/:$LD_LIBRARY_PATH
         gcc -m32 -pthread -o drmemory-false-positive drmemory-false-positive.c
         find /usr -name "libunwind.so.8"
 
