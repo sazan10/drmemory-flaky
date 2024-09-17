@@ -71,6 +71,7 @@ jobs:
         }
         find "$DIRECTORY" -type f -executable | while read -r file; do
           if is_executable "$file"; then
+            echo "executing $file"
             run_with_drmemory "$file"
             echo ""
             echo ""
