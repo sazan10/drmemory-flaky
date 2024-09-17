@@ -12,9 +12,9 @@ return 0;
 int main() {
 long i;
 pthread_t t[4];
-a = (char_)malloc(4 * N);
+a = (char*)malloc(4 * N);
 for (i = 0; i < 4; i++)
-pthread_create(&t[i], 0, Thread, (void_)i);
+pthread_create(&t[i], 0, Thread, (void*)i);
 for (i = 0; i < 4; i++)
 pthread_join(t[i], 0);
 for (i = 0; i < N * 4; i++)
