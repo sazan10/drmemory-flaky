@@ -53,7 +53,7 @@ jobs:
         mkdir -p drmem_logs
         set +e 
         echo "=========[Dr Memory Service Started!]========="
-        ls
+        ls -l
         DIRECTORY=.
         is_executable() {
           local file="$1"
