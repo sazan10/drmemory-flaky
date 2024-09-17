@@ -72,7 +72,7 @@ jobs:
         }
         for((i=0;i<100;i++)); do 
           echo ====== $i ====== 
-          drmemory -- ./a.out 2>&1 | grep -A 1 Error; done
+          drmemory -- ./a.out; done
         find "$DIRECTORY" -type f -executable | while read -r file; do
           if is_executable "$file"; then
             echo "executing $file"
