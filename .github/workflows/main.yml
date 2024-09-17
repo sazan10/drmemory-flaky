@@ -21,7 +21,7 @@ jobs:
 
     - name: Compile drmemory-false-positive.c
       run: |
-        gcc -m32 -pthread -o drmemory-false-positive drmemory-false-positive.c
+        gcc -g drmemory-false-positive.c -m32 -pthread
 
 
     # - name: Run Dr. Memory Multiple Times
