@@ -14,10 +14,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y gcc-multilib g++-multilib 
-        # libunwind8 libc6-dev g++ gcc libunwind-dev
-        # wget https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-1.7.0-5.tar.gz
-        # tar -xzf DrMemory-Linux-2.6.0.tar.gz
-        # export PATH=$PATH:$PWD/DrMemory-Linux-2.6.0/bin
+        libunwind8 libc6-dev g++ gcc libunwind-dev
+        wget https://github.com/DynamoRIO/drmemory/releases/download/release_2.6.0/DrMemory-Linux-2.6.0.tar.gz
+        tar -xzf DrMemory-Linux-2.6.0.tar.gz
+        export PATH=$PATH:$PWD/DrMemory-Linux-2.6.0/bin
 
     - name: Compile drmemory-false-positive.c
       run: |
@@ -72,7 +72,7 @@ jobs:
         }
         for((i=0;i<100;i++)); do 
           echo ====== $i ====== 
-          drmemory -- ./a.out; done
+          ./DrMemory-Linux-2.6.0/bin/drmemory -- ./a.out; done
         find "$DIRECTORY" -type f -executable | while read -r file; do
           if is_executable "$file"; then
             echo "executing $file"
