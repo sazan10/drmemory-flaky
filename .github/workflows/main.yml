@@ -40,13 +40,13 @@ jobs:
         wget -P /tmp/ https://github.com/DynamoRIO/drmemory/releases/download/release_1.7.0/DrMemory-Linux-1.7.0-5.tar.gz && tar -xzf /tmp/DrMemory-Linux-1.7.0-5.tar.gz -C /tmp/ && echo "/tmp/DrMemory-Linux-1.7.0-5/bin" >> $GITHUB_PATH
 
            
-    - name: Disable Address Space Randomization
-      if: runner.os == 'Linux'
-      run: sudo sysctl -w kernel.randomize_va_space=0
+    # - name: Disable Address Space Randomization
+    #   if: runner.os == 'Linux'
+    #   run: sudo sysctl -w kernel.randomize_va_space=0
       
-    - name: Disable swapping 
-      if: runner.os == 'Linux' 
-      run: sudo swapoff -a
+    # - name: Disable swapping 
+    #   if: runner.os == 'Linux' 
+    #   run: sudo swapoff -a
         
     - name: Run Dr. Memory
       run: |
